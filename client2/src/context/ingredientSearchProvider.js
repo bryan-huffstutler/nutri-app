@@ -50,6 +50,6 @@ export default function IngredientSearchProvider (props) {
   return (
     <IngredientSearchContext.Provider value = {{...ingredientState, handleIngredientChange, handleIngredientSubmit}}>
       {props.children}
-    </IngredientSearchContext.Provider>
+    </IngredientSearchContext.Provider> 
   )
 }
