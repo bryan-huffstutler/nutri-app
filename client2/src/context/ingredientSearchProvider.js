@@ -5,7 +5,6 @@ export const IngredientSearchContext = React.createContext()
 export default function IngredientSearchProvider (props) {
   const initState = {
     ingredients: '',
-    toggleDisplay: false,
     recipes: []
   }
 
@@ -25,7 +24,7 @@ export default function IngredientSearchProvider (props) {
       method: 'GET',
       url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients',
       params: {
-        ingredients: ingredientState.ingredients,
+        ingredients: ingredientState.ingredients.replace(/\s+/g, ''),
         number: '5',
         ignorePantry: 'true',
         ranking: '1'
@@ -35,15 +34,15 @@ export default function IngredientSearchProvider (props) {
         'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
       }
     }
+    console.log(ingredientState.ingredients.replace(/\s+/g, ''))
     axios.request(options)
-    .then(res => setIngredientState(prevInputs => ({
-      ...prevInputs,
-      recipes: res.data
-    })))
-    .then(setIngredientState(prevInputs => ({
-      ...prevInputs,
-      toggleDisplay: !ingredientState.toggleDisplay
-    })))
+    .then(res => {
+      setIngredientState(prevInputs => ({
+        ...prevInputs,
+        recipes: res.data
+      }))
+      console.log(res.data)
+    })
     .catch(err => console.log(err.response.data.errMsg))
   }
 
