@@ -5,12 +5,12 @@ import { IngredientSearchContext } from './context/ingredientSearchProvider'
 import IngredientSearch from './components/ingredientSearch'
 
 export default function App() {
-  const { recipes } = useContext(IngredientSearchContext)
+  const { ingRecipes } = useContext(IngredientSearchContext)
 
   return (
     <div className="App">
       <IngredientSearch />
-      {recipes ? recipes.map(rec => <Recipe {...rec} />) : ''}
+      {ingRecipes ? ingRecipes.map(rec => <Recipe {...rec} />) : ''}
     </div>
   );
 }
