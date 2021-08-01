@@ -6,7 +6,6 @@ export default function Recipe (props) {
     <div>
       <img src = {props.image}/>
       <h4>{props.title}</h4>
-      <p>{props.usedIngredients.map(ing => ing.originalName)}</p>
     </div>
   )
 }

@@ -5,7 +5,7 @@ export const IngredientSearchContext = React.createContext()
 export default function IngredientSearchProvider (props) {
   const initState = {
     ingredients: '',
-    recipes: []
+    ingRecipes: []
   }
 
   const [ingredientState, setIngredientState] = useState(initState)
@@ -20,26 +20,11 @@ export default function IngredientSearchProvider (props) {
 
   function handleIngredientSubmit(e){
     e.preventDefault()
-    var options = {
-      method: 'GET',
-      url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/findByIngredients',
-      params: {
-        ingredients: ingredientState.ingredients.replace(/\s+/g, ''),
-        number: '5',
-        ignorePantry: 'true',
-        ranking: '1'
-      },
-      headers: {
-        'x-rapidapi-key': 'f1165055a3msh7132362fd8d5c00p1db19djsn65002ad70538',
-        'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
-      }
-    }
-    console.log(ingredientState.ingredients.replace(/\s+/g, ''))
-    axios.request(options)
+    axios.get(`/ingSearch/${ingredientState.ingredients}`)
     .then(res => {
       setIngredientState(prevInputs => ({
         ...prevInputs,
-        recipes: res.data
+        ingRecipes: res.data
       }))
       console.log(res.data)
     })
