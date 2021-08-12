@@ -1,14 +1,15 @@
-import React, {useContext, useState} from 'react'
+import React, { useState } from 'react'
 export const MasterContext = React.createContext();
 
 export default function MasterProvider (props) {
   const initState = {
     recipes: [],
-    favRecipe: {}
+    favRecipe: {},
+    searchType: ''
   }
 
   const [master, setMasterState] = useState(initState)
-
+  console.log(master)
   function handleMasterChange(e){
     const {name, value} = e.target
     setMasterState(prevInputs => ({
