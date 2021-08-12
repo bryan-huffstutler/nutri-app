@@ -1,16 +1,15 @@
 import React, { useContext } from 'react'
 import './App.css';
-import Recipe from './components/recipe'
-import { IngredientSearchContext } from './context/ingredientSearchProvider'
-import IngredientSearch from './components/ingredientSearch'
+import Recipe from './components/Recipe'
+import IngredientSearch from './components/IngredientSearch'
+import { MasterContext } from './context/masterProvider'
 
 export default function App() {
-  const { ingRecipes } = useContext(IngredientSearchContext)
+  const { searchType } = useContext(MasterContext)
 
   return (
     <div className="App">
       <IngredientSearch />
-      {ingRecipes ? ingRecipes.map(rec => <Recipe {...rec} />) : ''}
     </div>
   );
 }

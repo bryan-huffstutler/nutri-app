@@ -18,7 +18,7 @@ const axios = require('axios')
 //   }
 // }
 
-//Get by Ingredients
+//Get by INGREDIENTS
 //Async to await response from 3rd party API before sending results to client
 ingSearchRouter.get('/:ingredients', async (req, res, next) => {
   const ingredients = req.params.ingredients
@@ -41,8 +41,10 @@ ingSearchRouter.get('/:ingredients', async (req, res, next) => {
       'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
     }
   }
+
   //var set to save res.data inside of to send to client
   var data;
+
   //async to await response from 3rd party api
   async function getThem () {
     await axios.request(options)
