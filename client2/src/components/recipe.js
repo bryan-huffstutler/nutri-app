@@ -6,6 +6,7 @@ export default function Recipe (props) {
     <div>
       <img src = {props.image}/>
       <h4>{props.title}</h4>
+      <a href={props.sourceUrl}>See Recipe</a>
     </div>
   )
 }

@@ -9,7 +9,7 @@ export default function MasterProvider (props) {
   }
 
   const [master, setMasterState] = useState(initState)
-  console.log(master)
+  
   function handleMasterChange(e){
     const {name, value} = e.target
     setMasterState(prevInputs => ({
@@ -17,7 +17,7 @@ export default function MasterProvider (props) {
       [name]: value
     }))
   }
-  
+
   return (
     <MasterContext.Provider value = {{...master, handleMasterChange}}>
       {props.children}
