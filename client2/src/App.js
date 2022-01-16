@@ -1,7 +1,7 @@
 import React, { useContext } from 'react'
 import './App.css';
 import RecipeList from './components/RecipeList'
-import IngredientSearch from './components/IngredientSearch'
+import LeftBar from './components/Left Bar/LeftBar';
 import { MasterContext } from './context/masterProvider'
 import { IngredientSearchContext } from './context/ingredientSearchProvider';
 
@@ -11,8 +11,19 @@ export default function App() {
 
   return (
     <div className="App">
-      <IngredientSearch />
-      {ingRecipes ? <RecipeList /> : ""}
+      
+      <div>
+        <h1>Recipe Searcher</h1>
+        <LeftBar />
+      </div>
+      
+      <div>
+        <RecipeList />
+      </div>
+
+      <div>
+
+      </div>
     </div>
   );
 }
