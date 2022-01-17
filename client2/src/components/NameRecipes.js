@@ -1,14 +1,14 @@
-import React, {useContext} from 'react'
-import { NameSearchContext } from "../context/nameSearchProvider"
+import React, { useContext } from 'react'
+import { SearchContext } from "../context/searchProdiver"
 import Recipe from './Recipe'
 
 export default function NameRecipes(props) {
-  const {nameSearchRecipes} = useContext(NameSearchContext)
-  
+  const { nameSearchRecipes } = useContext(SearchContext)
+
   return (
     <div>
       {nameSearchRecipes.map(x => {
-        return <Recipe key = {x.id} image = {x.image} title = {x.title} sourceUrl={x.sourceUrl}/>
+        return <Recipe key={x.id} image={x.image} title={x.title} sourceUrl={x.sourceUrl} />
       })}
     </div>
   )

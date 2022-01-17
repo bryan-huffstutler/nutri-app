@@ -17,7 +17,7 @@ export default function IngredientSearchProvider(props) {
     setIngredientState(prevInputs => ({
       ...prevInputs,
       [name]: value
-    }))
+    })) 
   }
 
   function handleIngredientSubmit(e) {

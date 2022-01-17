@@ -1,18 +1,18 @@
-import React, {useContext} from 'react'
-import { IngredientSearchContext } from '../../context/ingredientSearchProvider'
+import React, { useContext } from 'react'
+import { SearchContext } from '../../context/searchProdiver'
 
-export default function IngredientSearch (props) {
-  const {handleIngredientChange, handleIngredientSubmit, ingredients} = useContext(IngredientSearchContext)
+export default function IngredientSearch(props) {
+  const { handleStateChange, handleIngredientSubmit, ingredients } = useContext(SearchContext)
 
   return (
     <div>
       <form onSubmit={handleIngredientSubmit}>
-        <input 
-          onChange={handleIngredientChange} 
-          name='ingredients' 
-          value={ingredients} 
-          type='text' 
-          placeholder='Enter Ingredients'/>
+        <input
+          onChange={handleStateChange}
+          name='ingredients'
+          value={ingredients}
+          type='text'
+          placeholder='Enter Ingredients' />
         <button>Submit</button>
       </form>
     </div>
