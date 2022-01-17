@@ -1,18 +1,25 @@
 import React, { useContext } from 'react'
-import {NameSearchContext} from '../../context/nameSearchProvider'
+import { SearchContext } from '../../context/searchProdiver'
+import SearchPreferences from './SearchPreferences'
 
 export default function SearchByName(props) {
-  const { handleRecipeChange, handleNameSubmit, recipeName } = useContext(NameSearchContext)
+  const { handleStateChange, handleNameSubmit, recipeName } = useContext(SearchContext)
+
+  function resetSelform() {
+    let x = document.getElementById("selForm")
+    x.value = ""
+  }
 
   return (
     <div>
       <form onSubmit={handleNameSubmit}>
-        <input 
-          onChange={handleRecipeChange} 
-          name='recipeName' 
-          value={recipeName} 
-          type='text' 
-          placeholder='Enter Recipe Name'/>
+        <SearchPreferences />
+        <input
+          onChange={handleStateChange}
+          name='recipeName'
+          value={recipeName}
+          type='text'
+          placeholder='Enter Recipe Name' />
         <button>Submit</button>
       </form>
     </div>

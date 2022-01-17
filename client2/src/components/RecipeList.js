@@ -1,17 +1,12 @@
 import React, {useContext} from 'react'
-import { IngredientSearchContext } from '../context/ingredientSearchProvider'
-import { NameSearchContext } from '../context/nameSearchProvider'
-import IngRecipes from './IngRecipes'
+import { SearchContext } from '../context/searchProdiver'
 import NameRecipes from './NameRecipes'
 
 export default function RecipeList(props){
+  const {nameSearchRecipes} = useContext(SearchContext)
   
-  const {ingRecipes} = useContext(IngredientSearchContext)
-  const {nameSearchRecipes} = useContext(NameSearchContext)
-
   return (
     <div>
-      {ingRecipes ? <IngRecipes /> : ""}
       {nameSearchRecipes ? <NameRecipes /> : ""}
     </div>
   )
