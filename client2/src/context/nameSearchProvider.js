@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react'
 import axios from 'axios'
-import { IngredientSearchContext } from './ingredientSearchProvider'
+// import { IngredientSearchContext } from './ingredientSearchProvider'
 export const NameSearchContext = React.createContext()
 
 export default function NameSearchProvider(props) {
@@ -8,7 +8,7 @@ export default function NameSearchProvider(props) {
     recipeName: '',
     nameSearchRecipes: []
   }
-  const { resetIngredientState } = useContext(IngredientSearchContext)
+  // const { resetIngredientState } = useContext(IngredientSearchContext)
   const [recipeState, setRecipeState] = useState(initState)
 
   function handleRecipeChange(e) {
