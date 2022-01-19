@@ -3,7 +3,7 @@ import './App.css';
 import RecipeList from './components/RecipeList'
 import LeftBar from './components/Left Bar/LeftBar';
 import { MasterContext } from './context/masterProvider'
-
+import RightBar from './components/Right Bar/RightBar';
 
 export default function App() {
   const { searchType } = useContext(MasterContext)
@@ -22,7 +22,7 @@ export default function App() {
       </div>
 
       <div>
-
+        <RightBar />
       </div>
     </div>
   );

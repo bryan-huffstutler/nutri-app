@@ -22,19 +22,20 @@ mongoose.connect(
 );
 
 //Routes
- app.use('/api', expressJwt({secret: process.env.SECRET, algorithms: ['HS256']}))
+app.use('/api', expressJwt({ secret: process.env.SECRET, algorithms: ['HS256'] }))
 app.use('/api/user', require('./routes/userRouter.js'))
-app.use('/ingSearch', require('./routes/ingSearchRouter.js'))
+app.use('/api/ingSearch', require('./routes/ingSearchRouter.js'))
 app.use('/searchByName', require('./routes/nameSearchRouter.js'))
+app.use('/recipes', require('./routes/recipeRouter.js'))
 
 //Error handler
 app.use((err, req, res, next) => {
   console.log(err)
-  if(err.name === "Unauthorized Error"){
+  if (err.name === "Unauthorized Error") {
     res.status(err.status)
   }
-  return res.send({errMsg: err.message})
+  return res.send({ errMsg: err.message })
 })
 
 //Server Initiation
-app.listen(9000, () => {console.log('Server is Running on Port: 9000')})
+app.listen(9000, () => { console.log('Server is Running on Port: 9000') })
