@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { SearchContext } from '../../context/searchProdiver'
+import { SearchContext } from '../../context/searchProvider'
 import SearchPreferences from './SearchPreferences'
 
 export default function SearchByName(props) {

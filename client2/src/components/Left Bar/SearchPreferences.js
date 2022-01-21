@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { SearchContext } from '../../context/searchProdiver'
+import { SearchContext } from '../../context/searchProvider'
 
 export default function SearchPreferences(props) {
   const { handleStateChange } = useContext(SearchContext)
