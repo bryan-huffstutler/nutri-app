@@ -30,7 +30,7 @@ const { response } = require('express')
 // 	console.error(error);
 // });
 
-//Get by NAME
+//Get by NAME & DIET
 nameSearchRouter.get('/:name/:diet', async (req, res, next) => {
   const name = req.params.name
   const diet = req.params.diet
@@ -70,6 +70,7 @@ nameSearchRouter.get('/:name/:diet', async (req, res, next) => {
 
 })
 
+//Get by NAME
 nameSearchRouter.get('/:name', async (req, res, next) => {
   const name = req.params.name
 
@@ -81,10 +82,7 @@ nameSearchRouter.get('/:name', async (req, res, next) => {
   var options = {
     method: 'GET',
     url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search',
-    params: {
-      query: name,
-      number: '10'
-    },
+    params: {query: name,number: '10'},
     headers: {
       'x-rapidapi-key': 'f1165055a3msh7132362fd8d5c00p1db19djsn65002ad70538',
       'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
@@ -107,4 +105,6 @@ nameSearchRouter.get('/:name', async (req, res, next) => {
   res.send(data) //sends data back to client
 
 })
+
+
 module.exports = nameSearchRouter

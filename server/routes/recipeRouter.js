@@ -1,6 +1,7 @@
 const express = require('express')
 const recipeRouter = express.Router()
 const Recipe = require('../models/recipe')
+const axios = require('axios')
 
 //Get All by User
 recipeRouter.get('/user/:userId', (req, res, next) => {
@@ -49,6 +50,44 @@ recipeRouter.delete('/:recipeId', (req, res, next) => {
       return res.status(200).send(`Successfully deleted ${deletedItem} from the DB.`)
     }
   )
+})
+
+//Get Recipe
+recipeRouter.get('/getfromsite/:site', async (req, res, next) => {
+  const site = req.params.site
+  // const options = {
+  //   method: 'GET',
+  //   url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/extract',
+  //   params: {url: site},
+  //   headers: {
+  //     'x-rapidapi-key': 'f1165055a3msh7132362fd8d5c00p1db19djsn65002ad70538',
+  //     'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+  //   }
+  // };
+  // console.log(req.params.site)
+
+  var data;
+  async function getRecipe(){
+    const options = {
+      method: 'GET',
+      url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/extract',
+      params: {url: site},
+      headers: {
+        'x-rapidapi-key': 'f1165055a3msh7132362fd8d5c00p1db19djsn65002ad70538',
+        'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
+      }
+    };
+    await axios.get(options)
+      .then(res => {
+        data = res.data
+      })
+      .catch(err => console.log(err))
+  }
+  
+  await getRecipe()
+  res.status(200)
+  res.send(data)
+ 
 })
 
 module.exports = recipeRouter
