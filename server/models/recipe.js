@@ -8,11 +8,11 @@ const recipeSchema = new Schema({
     required: true,
     lowercase: true
   },
-  // user: {
-  //   type: Schema.Types.ObjectId,
-  //   required: true,
-  //   lowercase: true
-  // },
+  user: {
+    type: Schema.Types.ObjectId,
+    required: true,
+    lowercase: true
+  },
   sourceUrl: {
     type: String,
     required: true,

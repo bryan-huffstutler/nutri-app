@@ -12,7 +12,7 @@ userAxios.interceptors.request.use(config => {
 export default function MasterProvider(props) {
   const initState = {
     user: JSON.parse(localStorage.getItem('user')) || {},
-    token: localStorage.getItem('token') || '',
+    token: localStorage.getItem('token') || "",
     recipes: [],
     favRecipe: {},
     searchType: '',
@@ -72,8 +72,15 @@ export default function MasterProvider(props) {
     }))
   }
 
+  function resetAuthErr() {
+    setMasterState(prevState => ({
+      ...prevState,
+      errMsg: ""
+    }))
+  }
+
   return (
-    <MasterContext.Provider value={{ ...master, handleMasterChange }}>
+    <MasterContext.Provider value={{ ...master, resetAuthErr, signup, login, handleAuthErr, logout, handleMasterChange }}>
       {props.children}
     </MasterContext.Provider>
   )
