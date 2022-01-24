@@ -99,8 +99,14 @@ export default function SearchProvider(props) {
       .catch(err => console.log(err.response.data.errMsg))
   }
 
+  function resetSearchState() {
+    setSearchState(prevInputs => ({
+      initState
+    }))
+  }
+
   return (
-    <SearchContext.Provider value={{ ...searchState, handleStateChange, handleNameSubmit, handleIngredientSubmit }}>
+    <SearchContext.Provider value={{ ...searchState, handleStateChange, handleNameSubmit,resetSearchState, handleIngredientSubmit }}>
       {props.children}
     </SearchContext.Provider>
   )

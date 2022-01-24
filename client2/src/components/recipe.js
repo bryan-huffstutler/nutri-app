@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHeart } from '@fortawesome/free-solid-svg-icons'
-
 import axios from 'axios'
 import Modal from './Modal/Modal'
 
@@ -10,28 +9,36 @@ export default function Recipe(props) {
     fav: false,
     added: false,
     title: "",
-    readyIn: "",
+    readyIn: 0,
     summary: "",
     image: "",
-    serves: "",
-    instructions: "",
-    points: "",
+    serves: 0,
+    instructions: [],
+    points: 0,
     ingredients: [],
     isOpen: false
   }
   const [recState, setRecState] = useState(initState)
+
   const userAxios = axios.create()
+
   userAxios.interceptors.request.use(config => {
     const token = localStorage.getItem("token")
     config.headers.Authorization = `Bearer ${token}`
     return config
   })
+
   function handleCheck(e) {
     if (e.target.checked) {
       let newRecipe = {
         recipeName: props.title,
-        sourceUrl: props.sourceUrl,
-        id: props.id
+        id: props.id,
+        readyInMinutes: recState.readyIn,
+        servings: recState.serves,
+        ingredients: recState.ingredients,
+        weightWatcherSmartPoints: recState.points,
+        instructions: recState.instructions,
+        image: recState.image
       }
       userAxios.post('/api/recipes', newRecipe)
         .then(res => {
@@ -82,30 +89,34 @@ export default function Recipe(props) {
   }, [])
 
   return (
-    <div>
+    <div className='single-recipe'>
       {/* <img src = {props.image}/> */}
       {/* {console.log(recState.instructions)} */}
       <img src={recState.image} />
       <h4>{props.title}</h4>
       <button onClick={toggleModal}>See Recipe</button>
+
       {recState.instructions && recState.isOpen ?
         <Modal toggleOpen={toggleModal}>
+
           <div><h2>{props.title}</h2></div>
           <div><h4>Summary</h4></div>
-          Ready In: {recState.readyIn} minutes <br/>
-          Serves: {recState.serves} <br/>
-          Weight Watcher Points: {recState.points}<br/>
+          Ready In: {recState.readyIn} minutes <br />
+          Serves: {recState.serves} <br />
+          Weight Watcher Points: {recState.points}<br />
           <h4>Ingredients:</h4> {recState.ingredients.map(x => {
             return <div>{x}</div>
           })}
           <div><h4>Instructions</h4></div>
           {recState.instructions.map(x => { return x.step + " " })}
+
         </Modal> : ""}
+
       <br />
 
       {recState.fav ? "" : <span><label>Save For Later: </label><input type='checkbox' onChange={handleCheck} /></span>}
 
-      <FontAwesomeIcon icon={faHeart} />
+      {recState.fav ? <FontAwesomeIcon icon={faHeart} /> : ""}
     </div>
   )
 }

@@ -7,6 +7,7 @@
   padding: 50px;
   z-index: 1000;
   border-radius: 14px;
+  overflow-y: scroll;
 }
 
 .overlay {

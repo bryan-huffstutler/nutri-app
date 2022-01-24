@@ -1,6 +1,6 @@
 import React, { useContext } from 'react'
 import { MasterContext } from '../../context/masterProvider'
-import Favorites from './Favorites'
+
 import SavedRecipes from './SavedRecipes'
 
 export default function Profile() {
@@ -10,9 +10,8 @@ export default function Profile() {
     <div>
       <h1>Profile</h1>
       <h3>Hello @{user.username}!</h3>
-      <Favorites />
-      <SavedRecipes />
       <button onClick={logout}>Logout</button>
+      <SavedRecipes />
     </div>
   )
 }
