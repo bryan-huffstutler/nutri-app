@@ -1,9 +1,10 @@
 import React from 'react'
+import Profile from './Profile'
 
 export default function RightBar (props) {
   return (
     <div>
-      <h2>Profile</h2>
+      <Profile />
     </div>
   )
 }

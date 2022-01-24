@@ -23,10 +23,11 @@ mongoose.connect(
 
 //Routes
 app.use('/api', expressJwt({ secret: process.env.SECRET, algorithms: ['HS256'] }))
-app.use('/api/user', require('./routes/userRouter.js'))
-app.use('/api/ingSearch', require('./routes/ingSearchRouter.js'))
+app.use('/auth', require('./routes/authRouter.js'))
+app.use('/ingSearch', require('./routes/ingSearchRouter.js'))
 app.use('/searchByName', require('./routes/nameSearchRouter.js'))
-app.use('/recipes', require('./routes/recipeRouter.js'))
+app.use('/api/recipes', require('./routes/recipeRouter.js'))
+
 
 //Error handler
 app.use((err, req, res, next) => {

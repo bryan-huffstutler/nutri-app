@@ -2,19 +2,17 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
-import MasterSearchProvider from './context/masterProvider'
-import SearchProvider from './context/searchProvider'
+import { BrowserRouter } from 'react-router-dom';
+import MasterSearchProvider from './context/masterProvider';
+import SearchProvider from './context/searchProvider';
 
 ReactDOM.render(
-  <MasterSearchProvider>
-
-    <SearchProvider>
-      <App />
-    </SearchProvider>
-
-
-  </MasterSearchProvider>
-  ,
-
+  <BrowserRouter>
+    <MasterSearchProvider>
+      <SearchProvider>
+        <App />
+      </SearchProvider>
+    </MasterSearchProvider>
+  </BrowserRouter>,
   document.getElementById('root')
 );

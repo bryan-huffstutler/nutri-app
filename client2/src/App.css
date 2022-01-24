@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  height: 100vh;
 }
 
 .App-logo {
@@ -35,4 +36,72 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.modal {
+  font-size: 12px;
+  overflow-y: auto;
+  height: 65vh;
+}
+.modal > .header {
+  width: 100%;
+  border-bottom: 1px solid gray;
+  font-size: 18px;
+  text-align: center;
+  padding: 5px;
+}
+.modal > .content {
+  width: 100%;
+  padding: 10px 5px;
+  background-color: red;
+  overflow-y: auto;
+  height: 50vh;
+}
+
+.modal > .actions {
+  width: 100%;
+  padding: 10px 5px;
+  margin: auto;
+  text-align: center;
+}
+.modal > .close {
+  cursor: pointer;
+  position: absolute;
+  display: block;
+  padding: 2px 5px;
+  line-height: 20px;
+  right: -10px;
+  top: -10px;
+  font-size: 24px;
+  background: #7c3535;
+  border-radius: 18px;
+  border: 1px solid #cfcece;
+}
+
+.home-container {
+  display: grid;
+  grid-template-columns: 25% 50% 25%;
+}
+
+.main-view {
+  overflow-y: auto;
+  padding: 55px;
+  height: 100vh;
+  background-color: #61dafb;
+}
+
+.left-view {
+  height: 100vh;
+  background-color: blueviolet;
+}
+
+.right-view {
+  height: 100vh;
+  overflow-y: auto;
+  background-color: aquamarine;
+}
+
+.single-recipe {
+  padding: 20px;
+  margin: 10px;
 }

@@ -21,7 +21,7 @@ export default function NameSearchProvider(props) {
 
   function handleNameSubmit(e) {
     e.preventDefault()
-    axios.get(`/searchByName/${recipeState.recipeName}`)
+    axios.get(`/api/searchByName/${recipeState.recipeName}`)
       .then(res => {
         setRecipeState(prevInputs => ({
           ...prevInputs,

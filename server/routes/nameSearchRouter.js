@@ -1,34 +1,7 @@
 const express = require('express')
 const nameSearchRouter = express.Router()
 const axios = require('axios')
-const { response } = require('express')
 
-// 3rd party API SETUP
-// var axios = require("axios").default;
-
-// var options = {
-//   method: 'GET',
-//   url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/search',
-//   params: {
-//     query: 'burger',
-//     diet: 'vegetarian',
-//     excludeIngredients: 'coconut',
-//     intolerances: 'egg, gluten',
-//     number: '10',
-//     offset: '0',
-//     type: 'main course'
-//   },
-//   headers: {
-//     'x-rapidapi-key': 'f1165055a3msh7132362fd8d5c00p1db19djsn65002ad70538',
-//     'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
-//   }
-// };
-
-// axios.request(options).then(function (response) {
-// 	console.log(response.data);
-// }).catch(function (error) {
-// 	console.error(error);
-// });
 
 //Get by NAME & DIET
 nameSearchRouter.get('/:name/:diet', async (req, res, next) => {
