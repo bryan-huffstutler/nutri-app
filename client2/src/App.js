@@ -15,7 +15,7 @@ export default function App() {
   const { token } = useContext(MasterContext)
 
   return (
-    <div className="App">
+    <div className="App"> 
 
       <Routes>
         <Route exact path='/'
@@ -25,6 +25,9 @@ export default function App() {
               comp={<Home />}
             />}
         />
+
+        <Route path='/skipped' 
+        element={<Home />}/>
 
         <Route path='*' element={<ErrorPage />} />
       </Routes>

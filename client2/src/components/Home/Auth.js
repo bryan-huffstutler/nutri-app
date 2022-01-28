@@ -1,9 +1,12 @@
 import React, { useState, useContext } from 'react'
 import { MasterContext } from '../../context/masterProvider'
 import AuthForm from './AuthForm'
+import {useNavigate} from 'react-router-dom'
 
 export default function Auth() {
   const initInputs = { username: "", password: "" }
+
+  const navigate = useNavigate('skipped')
 
   const [inputs, setInputs] = useState(initInputs)
   const [toggle, setToggle] = useState(false)
@@ -33,6 +36,10 @@ export default function Auth() {
     resetAuthErr()
   }
 
+  function skipped () {
+    navigate("/skipped")
+  }
+
   return (
     <div className="auth-container">
       <div className='auth-form-container'>
@@ -59,7 +66,8 @@ export default function Auth() {
             />
             <button className='button' onClick={() => toggleForm()}>Already a member?</button>
           </>
-        }
+        }<br/>
+        <button onClick = {skipped}>Skip Login</button>
       </div>
     </div>
   )
