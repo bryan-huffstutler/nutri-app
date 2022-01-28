@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react'
-import {MasterContext} from '../../context/masterProvider'
+import { MasterContext } from '../../context/masterProvider'
 import AuthForm from './AuthForm'
 
 export default function Auth() {
@@ -35,30 +35,32 @@ export default function Auth() {
 
   return (
     <div className="auth-container">
-      <h1>Nutri-App</h1>
-      {!toggle ?
-        <>
-          <AuthForm
-            handleChange={handleChange}
-            handleSubmit={handleLogin}
-            inputs={inputs}
-            btnText="Login"
-            errMsg={errMsg}
-          />
-          <button onClick={() => toggleForm()}>Not a member?</button>
-        </>
-        :
-        <>
-          <AuthForm
-            handleChange={handleChange}
-            handleSubmit={handleSignup}
-            inputs={inputs}
-            btnText="Sign Up"
-            errMsg={errMsg}
-          />
-          <button onClick={() => toggleForm()}>Already a member?</button>
-        </>
-      }
+      <div className='auth-form-container'>
+        <h1>Nutri-App</h1>
+        {!toggle ?
+          <>
+            <AuthForm
+              handleChange={handleChange}
+              handleSubmit={handleLogin}
+              inputs={inputs}
+              btnText="Login"
+              errMsg={errMsg}
+            />
+            <button className='button' onClick={() => toggleForm()}>Not a member?</button>
+          </>
+          :
+          <>
+            <AuthForm
+              handleChange={handleChange}
+              handleSubmit={handleSignup}
+              inputs={inputs}
+              btnText="Sign Up"
+              errMsg={errMsg}
+            />
+            <button className='button' onClick={() => toggleForm()}>Already a member?</button>
+          </>
+        }
+      </div>
     </div>
   )
 }

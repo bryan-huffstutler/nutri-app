@@ -5,7 +5,7 @@ import SearchPreferences from './SearchPreferences'
 
 export default function LeftBar() {
   return (
-    <div>
+    <div className='left-bar-content'>
       {/* <IngredientSearch /> */}
       {/* <SearchPreferences /> */}
       <SearchByName />

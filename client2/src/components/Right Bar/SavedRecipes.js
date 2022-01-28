@@ -24,22 +24,26 @@ export default function SavedRecipes() {
       ))
       .catch(err => console.log(err.errMsg))
   }
+
   return (
-    <div>
-      {console.log(recipes.recipes)}
+    <div className='fav-recipe-container'>
+      
       <button onClick={getRecipes}>Saved Recipes</button>
-      {recipes.recipes ? 
-      recipes.recipes.map(x => <FavRecipe 
-        key={x._id}
-        instructions={x.instructions}
-        image={x.image}
-        ingredients={x.ingredients}
-        readyInMinutes={x.readyInMinutes}
-        recipeName={x.recipeName}
-        weightWatcherSmartPoints={x.weightWatcherSmartPoints}
-        servings={x.servings}
-      />)
-      : ""}
+      {recipes.recipes ?
+        recipes.recipes.map(x => <FavRecipe
+          
+          key={x._id}
+          instructions={x.instructions}
+          image={x.image}
+          ingredients={x.ingredients}
+          readyInMinutes={x.readyInMinutes}
+          recipeName={x.recipeName}
+          weightWatcherSmartPoints={x.weightWatcherSmartPoints}
+          servings={x.servings}
+          id={x._id}
+          getRecipes={getRecipes}
+        />)
+        : ""}
     </div>
   )
 }
