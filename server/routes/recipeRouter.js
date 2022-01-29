@@ -39,7 +39,7 @@ recipeRouter.post('/', (req, res, next) => {
 })
 
 //Delete Recipe from DB
-recipeRouter.delete('/:recipeId', (req, res, next) => {
+recipeRouter.delete('/delete/:recipeId', (req, res, next) => {
   Recipe.findOneAndDelete(
     {_id: req.params.recipeId},
     (err, deletedItem)=>{
@@ -55,15 +55,6 @@ recipeRouter.delete('/:recipeId', (req, res, next) => {
 //Get Recipe
 recipeRouter.get('/getfromsite/:site', async (req, res, next) => {
   const site = req.params.site
-  const options = {
-    method: 'GET',
-    url: 'https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/extract',
-    params: {url: site},
-    headers: {
-      'x-rapidapi-key': 'f1165055a3msh7132362fd8d5c00p1db19djsn65002ad70538',
-      'x-rapidapi-host': 'spoonacular-recipe-food-nutrition-v1.p.rapidapi.com'
-    }
-  };
   // console.log(req.params.site)
 
   var data;

@@ -1,9 +1,12 @@
 import React, { useState, useContext } from 'react'
-import {MasterContext} from '../../context/masterProvider'
+import { MasterContext } from '../../context/masterProvider'
 import AuthForm from './AuthForm'
+import {useNavigate} from 'react-router-dom'
 
 export default function Auth() {
   const initInputs = { username: "", password: "" }
+
+  const navigate = useNavigate('skipped')
 
   const [inputs, setInputs] = useState(initInputs)
   const [toggle, setToggle] = useState(false)
@@ -33,32 +36,39 @@ export default function Auth() {
     resetAuthErr()
   }
 
+  function skipped () {
+    navigate("/skipped")
+  }
+
   return (
     <div className="auth-container">
-      <h1>Nutri-App</h1>
-      {!toggle ?
-        <>
-          <AuthForm
-            handleChange={handleChange}
-            handleSubmit={handleLogin}
-            inputs={inputs}
-            btnText="Login"
-            errMsg={errMsg}
-          />
-          <button onClick={() => toggleForm()}>Not a member?</button>
-        </>
-        :
-        <>
-          <AuthForm
-            handleChange={handleChange}
-            handleSubmit={handleSignup}
-            inputs={inputs}
-            btnText="Sign Up"
-            errMsg={errMsg}
-          />
-          <button onClick={() => toggleForm()}>Already a member?</button>
-        </>
-      }
+      <div className='auth-form-container'>
+        <h1>Nutri-App</h1>
+        {!toggle ?
+          <>
+            <AuthForm
+              handleChange={handleChange}
+              handleSubmit={handleLogin}
+              inputs={inputs}
+              btnText="Login"
+              errMsg={errMsg}
+            />
+            <button className='button' onClick={() => toggleForm()}>Not a member?</button>
+          </>
+          :
+          <>
+            <AuthForm
+              handleChange={handleChange}
+              handleSubmit={handleSignup}
+              inputs={inputs}
+              btnText="Sign Up"
+              errMsg={errMsg}
+            />
+            <button className='button' onClick={() => toggleForm()}>Already a member?</button>
+          </>
+        }<br/>
+        <button onClick = {skipped}>Skip Login</button>
+      </div>
     </div>
   )
 }
