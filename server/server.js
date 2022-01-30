@@ -11,7 +11,8 @@ app.use(morgan('dev'));
 
 //Connection to MongoDB
 mongoose.connect(
-  'mongodb://localhost:27017/nutri-app',
+  // 'mongodb://localhost:27017/nutri-app',
+  'mongodb+srv://bhuff8404:vectorkill581@nutri-app.zd4bf.mongodb.net/nutri-app',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
